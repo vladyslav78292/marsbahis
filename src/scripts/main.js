@@ -1,7 +1,22 @@
 'use strict';
 
-const block2 = document.querySelector('.block2');
-const block1 = document.querySelector('.block1');
+const dropdowns = document.querySelectorAll('.dropdown');
 
-const height_block1 = block1.offsetHeight;
-block2.style.marginTop = height_block1 + 'px';
+dropdowns.forEach(dropdown => {
+  const select = dropdown.querySelector('.select');
+  const caret = dropdown.querySelector('.caret');
+  const menu = dropdown.querySelector('.menu');
+  const options = dropdown.querySelectorAll('.menu li');
+
+  select.addEventListener('click', () => {
+    select.classList.toggle('select-clicked');
+    menu.classList.toggle('menu-open');
+  });
+
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      select.classList.remove('select-clicked');
+      menu.classList.remove('menu-open');
+    });
+  });
+});
